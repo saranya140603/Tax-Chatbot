@@ -9,7 +9,7 @@
 <style>
   /* ── Reset & base ─────────────────────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
   :root {
     --bg:          #0b0f1a;
@@ -34,15 +34,17 @@
     --shadow:      0 4px 24px rgba(0,0,0,0.4);
   }
 
-  body {
+body {
     background: var(--bg);
     color: var(--text-1);
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-     height: 100vh;  
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* ── Ambient background grid ──────────────────────────────────────────── */
@@ -132,6 +134,7 @@
     flex: 1;
     overflow-y: scroll;  
     min-height: 0; 
+    overflow-x: hidden;
     padding: 28px 0 16px;
     display: flex;
     flex-direction: column;
