@@ -1,587 +1,360 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>TaxWise AI — Tax & Finance Assistant</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FinAI Concierge - Your Tax &amp; Finance Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "background": "#0f131e",
+                "outline-variant": "#424754",
+                "surface-container-highest": "#313441",
+                "surface-bright": "#353945",
+                "on-secondary-fixed": "#001c39",
+                "tertiary-container": "#8c919b",
+                "on-secondary": "#00315d",
+                "text-muted": "#94A3B8",
+                "on-tertiary-container": "#252a32",
+                "surface-dim": "#0f131e",
+                "on-tertiary": "#2c3139",
+                "on-primary-fixed": "#001a42",
+                "tertiary-fixed-dim": "#c2c6d1",
+                "surface-container-lowest": "#0a0e19",
+                "secondary": "#a4c9ff",
+                "error-container": "#93000a",
+                "tertiary": "#c2c6d1",
+                "surface-tint": "#adc6ff",
+                "on-primary": "#002e6a",
+                "inverse-on-surface": "#2c303c",
+                "surface": "#0f131e",
+                "surface-container": "#1b1f2b",
+                "surface-deep": "#0B0F1A",
+                "tertiary-fixed": "#dee2ed",
+                "error": "#ffb4ab",
+                "on-tertiary-fixed-variant": "#424750",
+                "success-emerald": "#10B981",
+                "secondary-container": "#0267b8",
+                "inverse-primary": "#005ac2",
+                "on-error-container": "#ffdad6",
+                "secondary-fixed-dim": "#a4c9ff",
+                "on-surface": "#dfe2f2",
+                "inverse-surface": "#dfe2f2",
+                "surface-card": "#131929",
+                "on-tertiary-fixed": "#171c23",
+                "on-secondary-container": "#d6e5ff",
+                "surface-container-high": "#262a36",
+                "on-error": "#690005",
+                "primary-fixed-dim": "#adc6ff",
+                "primary-fixed": "#d8e2ff",
+                "surface-variant": "#313441",
+                "on-primary-container": "#00285d",
+                "on-primary-fixed-variant": "#004395",
+                "on-secondary-fixed-variant": "#004883",
+                "secondary-fixed": "#d4e3ff",
+                "accent-cyan": "#22D3EE",
+                "on-surface-variant": "#c2c6d6",
+                "primary": "#adc6ff",
+                "surface-container-low": "#171b27",
+                "primary-container": "#4d8eff",
+                "outline": "#8c909f",
+                "on-background": "#dfe2f2"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-mobile": "20px",
+                "base": "8px",
+                "margin-desktop": "64px",
+                "gutter": "24px",
+                "container-max": "1200px"
+              },
+              "fontFamily": {
+                "label-sm": ["Inter"],
+                "body-md": ["Inter"],
+                "display-lg": ["Space Grotesk"],
+                "headline-lg": ["Space Grotesk"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Space Grotesk"],
+                "headline-lg-mobile": ["Space Grotesk"]
+              },
+              "fontSize": {
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
 <style>
-  /* ── Reset & base ─────────────────────────────────────────────────────── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 16px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-
-  :root {
-    --bg:          #0b0f1a;
-    --surface:     #131929;
-    --surface-2:   #1a2236;
-    --border:      #1f2e47;
-    --border-2:    #263550;
-    --accent:      #3b82f6;
-    --accent-2:    #60a5fa;
-    --accent-glow: rgba(59,130,246,0.18);
-    --accent-soft: rgba(59,130,246,0.10);
-    --green:       #10b981;
-    --green-soft:  rgba(16,185,129,0.12);
-    --text-1:      #f0f4ff;
-    --text-2:      #94a3b8;
-    --text-3:      #64748b;
-    --user-bubble: #1e3a5f;
-    --ai-bubble:   #131929;
-    --radius-sm:   8px;
-    --radius:      14px;
-    --radius-lg:   20px;
-    --shadow:      0 4px 24px rgba(0,0,0,0.4);
-  }
-
-body {
-    background: var(--bg);
-    color: var(--text-1);
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    overflow-x: hidden;
-    width: 100%;
-  }
-
-  /* ── Ambient background grid ──────────────────────────────────────────── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── Top navbar ───────────────────────────────────────────────────────── */
-  header {
-    position: relative; z-index: 10;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px;
-    height: 62px;
-    background: rgba(11,15,26,0.95);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    flex-shrink: 0;
-  }
-
-  .logo {
-    display: flex; align-items: center; gap: 10px;
-  }
-  .logo-icon {
-    width: 34px; height: 34px; border-radius: 9px;
-    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; box-shadow: 0 0 14px rgba(59,130,246,0.35);
-  }
-  .logo-text {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 17px; font-weight: 700; color: var(--text-1); letter-spacing: -0.3px;
-  }
-  .logo-text span { color: var(--accent-2); }
-
-  .header-right {
-    display: flex; align-items: center; gap: 12px;
-  }
-  .status-pill {
-    display: flex; align-items: center; gap: 6px;
-    padding: 5px 12px; border-radius: 20px;
-    background: var(--green-soft);
-    border: 1px solid rgba(16,185,129,0.2);
-    font-size: 12px; color: var(--green); font-weight: 500;
-  }
-  .status-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 6px var(--green);
-    animation: pulse-dot 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse-dot {
-    0%,100% { opacity:1; transform:scale(1); }
-    50%      { opacity:0.6; transform:scale(0.8); }
-  }
-
-  .new-chat-btn {
-    display: flex; align-items: center; gap: 6px;
-    padding: 7px 14px; border-radius: var(--radius-sm);
-    background: var(--accent-soft); border: 1px solid var(--border-2);
-    color: var(--accent-2); font-size: 13px; font-weight: 500;
-    cursor: pointer; transition: all 0.18s ease;
-  }
-  .new-chat-btn:hover { background: var(--accent-glow); border-color: var(--accent); }
-
-  /* ── Main layout ──────────────────────────────────────────────────────── */
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative; z-index: 1;
-    max-width: 820px;
-    width: 100%;
-    min-width: 0;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
-
-  /* ── Chat area ────────────────────────────────────────────────────────── */
-  #chat-area {
-    flex: 1;
-    overflow-y: auto;
-    min-height: 0;
-    overflow-x: hidden;
-    scrollbar-gutter: stable both-edges;
-    padding: 28px 0 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    scroll-behavior: smooth;
-  }
-  #chat-area::-webkit-scrollbar { width: 4px; }
-  #chat-area::-webkit-scrollbar-track { background: transparent; }
-  #chat-area::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
-
-  /* ── Welcome screen ───────────────────────────────────────────────────── */
-  .welcome {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; flex: 1; padding: 48px 16px 32px;
-    text-align: center; gap: 0;
-  }
-  .welcome-orb {
-    width: 72px; height: 72px; border-radius: 20px;
-    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #60a5fa 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 34px; margin-bottom: 22px;
-    box-shadow: 0 0 40px rgba(59,130,246,0.3), 0 0 80px rgba(59,130,246,0.1);
-    animation: float 4s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%,100% { transform: translateY(0); }
-    50%      { transform: translateY(-6px); }
-  }
-  .welcome h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 28px; font-weight: 700; color: var(--text-1);
-    letter-spacing: -0.5px; margin-bottom: 10px;
-  }
-  .welcome p {
-    font-size: 15px; color: var(--text-2); line-height: 1.6;
-    max-width: 480px; margin-bottom: 32px;
-  }
-
-  /* ── Suggestion chips ─────────────────────────────────────────────────── */
-  .chips-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px; width: 100%; max-width: 560px;
-  }
-  .chip {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 13px 16px;
-    cursor: pointer;
-    transition: all 0.18s ease;
-    text-align: left;
-  }
-  .chip:hover {
-    background: var(--surface-2);
-    border-color: var(--accent);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(59,130,246,0.12);
-  }
-  .chip-icon { font-size: 18px; margin-bottom: 6px; }
-  .chip-text { font-size: 13px; color: var(--text-2); line-height: 1.4; }
-
-  /* ── Message bubbles ──────────────────────────────────────────────────── */
-  .msg-row {
-    display: flex; gap: 10px; align-items: flex-end;
-    animation: fade-up 0.22s ease forwards;
-  }
-  @keyframes fade-up {
-    from { opacity:0; transform:translateY(8px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-  .msg-row.user { flex-direction: row-reverse; }
-
-  .avatar {
-    width: 32px; height: 32px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; flex-shrink: 0;
-  }
-  .avatar.ai {
-    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-    box-shadow: 0 0 10px rgba(59,130,246,0.25);
-  }
-  .avatar.user { background: var(--surface-2); border: 1px solid var(--border-2); }
-
-  .bubble {
-    max-width: 72%; padding: 13px 16px;
-    border-radius: var(--radius-lg);
-    font-size: 14.5px; line-height: 1.7; position: relative;
-  }
-  .msg-row.ai .bubble {
-    background: var(--ai-bubble);
-    border: 1px solid var(--border);
-    border-bottom-left-radius: 4px;
-    color: var(--text-1);
-  }
-  .msg-row.user .bubble {
-    background: var(--user-bubble);
-    border: 1px solid rgba(59,130,246,0.3);
-    border-bottom-right-radius: 4px;
-    color: var(--text-1);
-  }
-
-  /* Markdown-like formatting in AI responses */
-  .bubble strong { color: var(--text-1); font-weight: 600; }
-  .bubble ul, .bubble ol { padding-left: 18px; margin: 6px 0; }
-  .bubble li { margin: 3px 0; color: var(--text-2); }
-  .bubble p { margin: 4px 0; }
-  .bubble code {
-    background: var(--surface-2); border: 1px solid var(--border);
-    border-radius: 4px; padding: 1px 6px;
-    font-family: 'Courier New', monospace; font-size: 13px;
-    color: var(--accent-2);
-  }
-
-  .msg-time {
-    font-size: 11px; color: var(--text-3); margin-top: 4px;
-    padding: 0 4px;
-  }
-  .msg-row.user .msg-time { text-align: right; }
-
-  /* ── Typing indicator ─────────────────────────────────────────────────── */
-  .typing-indicator { display: flex; gap: 5px; align-items: center; padding: 4px 0; }
-  .typing-indicator span {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent); display: block;
-    animation: bounce 1.2s ease-in-out infinite;
-  }
-  .typing-indicator span:nth-child(2) { animation-delay: 0.18s; }
-  .typing-indicator span:nth-child(3) { animation-delay: 0.36s; }
-  @keyframes bounce {
-    0%,80%,100% { transform:translateY(0); opacity:0.5; }
-    40%          { transform:translateY(-6px); opacity:1; }
-  }
-
-  /* ── Disclaimer banner ────────────────────────────────────────────────── */
-  .disclaimer {
-    display: flex; align-items: center; gap: 8px;
-    padding: 8px 14px; margin: 8px 0;
-    background: rgba(234,179,8,0.07);
-    border: 1px solid rgba(234,179,8,0.15);
-    border-radius: var(--radius-sm);
-    font-size: 12px; color: #a89060;
-  }
-  .disclaimer span:first-child { font-size: 14px; flex-shrink: 0; }
-
-  /* ── Input area ───────────────────────────────────────────────────────── */
-  .input-wrapper {
-    padding: 12px 0 20px;
-    flex-shrink: 0;
-  }
-  .input-box {
-    display: flex; align-items: flex-end; gap: 10px;
-    background: var(--surface);
-    border: 1px solid var(--border-2);
-    border-radius: var(--radius-lg);
-    padding: 12px 14px;
-    transition: border-color 0.18s ease, box-shadow 0.18s ease;
-  }
-  .input-box:focus-within {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-
-  #user-input {
-    flex: 1; background: none; border: none; outline: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 14.5px; color: var(--text-1);
-    resize: none; max-height: 140px; min-height: 24px;
-    line-height: 1.6;
-  }
-  #user-input::placeholder { color: var(--text-3); }
-
-  #send-btn {
-    width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
-    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-    border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.18s ease; box-shadow: 0 2px 10px rgba(59,130,246,0.3);
-  }
-  #send-btn:hover:not(:disabled) { transform: scale(1.06); box-shadow: 0 4px 16px rgba(59,130,246,0.45); }
-  #send-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-  #send-btn svg { width: 16px; height: 16px; fill: #fff; }
-
-  .input-meta {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 6px 4px 0;
-  }
-  .input-hint { font-size: 12px; color: var(--text-3); }
-  #char-count { font-size: 12px; color: var(--text-3); }
-
-  /* ── Error toast ──────────────────────────────────────────────────────── */
-  .toast {
-    position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
-    background: #7f1d1d; border: 1px solid #b91c1c;
-    color: #fca5a5; font-size: 13px; padding: 10px 18px;
-    border-radius: 30px; z-index: 999;
-    animation: fade-up 0.2s ease;
-    pointer-events: none;
-  }
-
-  /* ── Responsive ───────────────────────────────────────────────────────── */
-  @media (max-width: 600px) {
-    .chips-grid { grid-template-columns: 1fr; }
-    .bubble { max-width: 88%; }
-    header { padding: 0 14px; }
-    .logo-text { font-size: 15px; }
-    .status-pill { display: none; }
-  }
-</style>
+        .glass-panel {
+            background: rgba(19, 25, 41, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(240, 244, 255, 0.1);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(173, 198, 255, 0.3);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .breathing-border {
+            position: relative;
+        }
+        .breathing-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #adc6ff, #005ac2, #adc6ff);
+            background-size: 200% 200%;
+            z-index: -1;
+            animation: breathe 3s linear infinite;
+            opacity: 0.5;
+        }
+        @keyframes breathe {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
-<body>
-
-<!-- ── HEADER ──────────────────────────────────────────────────────────────── -->
-<header>
-  <div class="logo">
-    <div class="logo-icon">💼</div>
-    <div class="logo-text">Tax<span>Wise</span> AI</div>
-  </div>
-  <div class="header-right">
-    <div class="status-pill">
-      <div class="status-dot"></div>
-      Llama 3.3 · Online
-    </div>
-    <button class="new-chat-btn" onclick="newChat()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      New chat
-    </button>
-  </div>
-</header>
-
-<!-- ── MAIN ────────────────────────────────────────────────────────────────── -->
-<main>
-  <div id="chat-area">
-    <!-- Welcome screen rendered by JS -->
-  </div>
-
-  <!-- ── INPUT ─────────────────────────────────────────────────────────────── -->
-  <div class="input-wrapper">
-    <div class="disclaimer">
-      <span>⚠️</span>
-      TaxWise AI provides general information only — not professional tax advice. Consult a qualified tax advisor for your specific situation.
-    </div>
-    <div class="input-box">
-      <textarea id="user-input" rows="1" placeholder="Ask about taxes, GST, deductions, capital gains…" maxlength="1000"></textarea>
-      <button id="send-btn" onclick="sendMessage()" title="Send">
-        <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-      </button>
-    </div>
-    <div class="input-meta">
-      <span class="input-hint">Press Enter to send · Shift+Enter for new line</span>
-      <span id="char-count">0 / 1000</span>
-    </div>
-  </div>
+<body class="bg-surface-deep text-on-surface font-body-md min-h-screen selection:bg-primary/30 selection:text-primary">
+<!-- Grid Background Decoration -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(#adc6ff 1px, transparent 1px); background-size: 40px 40px;"></div>
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<span class="font-display-lg text-headline-md font-bold text-primary tracking-tight">FinAI Concierge</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Advisory</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Insights</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Compliance</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-success-emerald animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Llama 3.3 · Online</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold px-5 py-2 rounded-xl transition-all cursor-pointer active:scale-95 shadow-lg shadow-primary/10">
+                    New Chat
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Content -->
+<main class="relative pt-32 pb-40 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto z-10">
+<section class="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+<div class="w-20 h-20 mb-8 bg-surface-card glass-panel rounded-3xl flex items-center justify-center shadow-2xl animate-float">
+<span class="material-symbols-outlined text-primary text-[40px]" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-on-surface mb-6 leading-tight tracking-tighter">
+                Your <span class="text-primary text-glow">Tax &amp; Finance</span> Assistant
+            </h1>
+<p class="font-body-lg text-body-lg text-text-muted mb-10 max-w-2xl leading-relaxed">
+                Ask me anything about income tax, GST/VAT, deductions, capital gains, or general financial planning — I'll explain it clearly.
+            </p>
+</section>
+<!-- Feature Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
+<!-- Card 1 -->
+<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
+<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">bar_chart</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Income Tax Slabs</h3>
+<p class="text-text-muted leading-relaxed mb-6">What are the income tax slabs for salaried employees in India?</p>
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="">Ask this now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
+<div class="w-12 h-12 bg-accent-cyan/10 rounded-2xl flex items-center justify-center mb-6 text-accent-cyan group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">description</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">GST &amp; Rates</h3>
+<p class="text-text-muted leading-relaxed mb-6">How does GST work and what are the different GST rates?</p>
+<div class="flex items-center gap-2 text-accent-cyan font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="">Ask this now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
+<div class="w-12 h-12 bg-success-emerald/10 rounded-2xl flex items-center justify-center mb-6 text-success-emerald group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Section 80C</h3>
+<p class="text-text-muted leading-relaxed mb-6">What deductions can I claim under Section 80C?</p>
+<div class="flex items-center gap-2 text-success-emerald font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="">Ask this now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
+<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Capital Gains</h3>
+<p class="text-text-muted leading-relaxed mb-6">How is capital gains tax calculated on stock market investments?</p>
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="">Ask this now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+</div>
 </main>
-
+<!-- Footer Component -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/10 w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-gutter max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">work</span>
+</div>
+<span class="font-display-lg text-headline-md text-primary">FinAI Concierge</span>
+</div>
+<p class="font-label-sm text-label-sm text-text-muted text-center md:text-left">
+                    © 2024 FinAI Global. All rights reserved. SEC Registered Investment Advisor.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Regulatory Disclosures</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Security</a>
+</div>
+</div>
+</footer>
+<!-- Chat Widget Implementation -->
+<div class="fixed bottom-8 right-8 z-[100] flex flex-col items-end" id="chat-container">
+<!-- Chat Window -->
+<div class="hidden flex-col glass-panel rounded-[2rem] shadow-2xl mb-4 overflow-hidden transform origin-bottom-right transition-all duration-300 scale-95 opacity-0 w-[480px] h-[680px]" id="chat-window">
+<!-- Chat Header -->
+<div class="p-5 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[28px]">smart_toy</span></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold text-[16px]">TaxWise Assistant</h4>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-success-emerald"></span>
+<span class="text-[11px] text-text-muted font-medium">Ready to help</span>
+</div>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full hover:bg-surface-bright flex items-center justify-center transition-colors" id="close-chat">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Chat Content Area -->
+<div class="flex-1 overflow-y-auto p-5 space-y-4 hide-scrollbar">
+<!-- Warning Message -->
+<div class="bg-error-container/10 border border-error/20 p-3 rounded-xl flex gap-3">
+<span class="material-symbols-outlined text-error text-[18px]">warning</span>
+<p class="text-[12px] text-on-surface-variant leading-relaxed text-[14px]">
+                        TaxWise AI provides general information only — not professional tax advice. Consult a qualified tax advisor for your specific situation.
+                    </p>
+</div>
+<!-- Bot Message -->
+<div class="flex gap-3 max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[16px]">work</span>
+</div>
+<div class="bg-surface-container px-4 py-3 rounded-2xl rounded-tl-none">
+<p class="text-body-md text-[14px] text-[16px]">Hello! How can I help you navigate your taxes or financial planning today?</p>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-4 border-t border-outline-variant/10 bg-surface-container-low">
+<div class="breathing-border bg-surface-card rounded-2xl px-4 py-3 flex items-center gap-3 focus-within:ring-2 focus-within:ring-primary/30 transition-all">
+<textarea class="bg-transparent border-none focus:ring-0 w-full text-body-md text-[14px] placeholder:text-text-muted resize-none hide-scrollbar text-[16px]" placeholder="Ask about taxes, GST, deductions, capital gains..." rows="1"></textarea>
+<button class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<p class="text-[10px] text-text-muted mt-2 text-center">
+                    Press Enter to send · Shift+Enter for new line
+                </p>
+</div>
+</div>
+<!-- FAB Button -->
+<button class="w-16 h-16 bg-primary rounded-full shadow-xl shadow-primary/30 flex items-center justify-center text-on-primary hover:scale-110 active:scale-95 transition-all cursor-pointer group" id="chat-toggle">
+<span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">forum</span>
+</button>
+</div>
+<!-- Interaction Script -->
 <script>
-  // ── CONFIG ─────────────────────────────────────────────────────────────────
-  // Replace this with your Render backend URL after deployment
-  const BACKEND_URL = "https://tax-chatbot-a46m.onrender.com";
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+        let isOpen = false;
 
-  // ── State ──────────────────────────────────────────────────────────────────
-  let messages = [];
-  let isLoading = false;
+        function toggleChat() {
+            isOpen = !isOpen;
+            if (isOpen) {
+                chatWindow.classList.remove('hidden');
+                setTimeout(() => {
+                    chatWindow.classList.remove('scale-95', 'opacity-0');
+                    chatWindow.classList.add('scale-100', 'opacity-100');
+                }, 10);
+                chatToggle.innerHTML = '<span class="material-symbols-outlined text-[32px]">expand_more</span>';
+            } else {
+                chatWindow.classList.remove('scale-100', 'opacity-100');
+                chatWindow.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    chatWindow.classList.add('hidden');
+                }, 300);
+                chatToggle.innerHTML = '<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: \'FILL\' 1;">forum</span>';
+            }
+        }
 
-  const chatArea   = document.getElementById("chat-area");
-  const inputEl    = document.getElementById("user-input");
-  const sendBtn    = document.getElementById("send-btn");
-  const charCount  = document.getElementById("char-count");
+        chatToggle.addEventListener('click', toggleChat);
+        closeChat.addEventListener('click', toggleChat);
 
-  // ── Render welcome ─────────────────────────────────────────────────────────
-  function showWelcome() {
-    chatArea.innerHTML = `
-      <div class="welcome" id="welcome-screen">
-        <div class="welcome-orb">💼</div>
-        <h1>Your Tax & Finance Assistant</h1>
-        <p>Ask me anything about income tax, GST/VAT, deductions, capital gains, or general financial planning — I'll explain it clearly.</p>
-        <div class="chips-grid">
-          <div class="chip" onclick="chipClick(this)">
-            <div class="chip-icon">📊</div>
-            <div class="chip-text">What are the income tax slabs for salaried employees in India?</div>
-          </div>
-          <div class="chip" onclick="chipClick(this)">
-            <div class="chip-icon">🧾</div>
-            <div class="chip-text">How does GST work and what are the different GST rates?</div>
-          </div>
-          <div class="chip" onclick="chipClick(this)">
-            <div class="chip-icon">💰</div>
-            <div class="chip-text">What deductions can I claim under Section 80C?</div>
-          </div>
-          <div class="chip" onclick="chipClick(this)">
-            <div class="chip-icon">📈</div>
-            <div class="chip-text">How is capital gains tax calculated on stock market investments?</div>
-          </div>
-        </div>
-      </div>`;
-  }
+        // Auto-resize textarea
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    </script>
 
-  // ── Suggestion chip clicked ────────────────────────────────────────────────
-  function chipClick(el) {
-    inputEl.value = el.querySelector('.chip-text').textContent;
-    charCount.textContent = `${inputEl.value.length} / 1000`;
-    sendMessage();
-  }
 
-  // ── New chat ───────────────────────────────────────────────────────────────
-  function newChat() {
-    messages = [];
-    showWelcome();
-    inputEl.value = "";
-    charCount.textContent = "0 / 1000";
-  }
-
-  // ── Auto-grow textarea ─────────────────────────────────────────────────────
-  inputEl.addEventListener("input", () => {
-    inputEl.style.height = "auto";
-    inputEl.style.height = Math.min(inputEl.scrollHeight, 140) + "px";
-    charCount.textContent = `${inputEl.value.length} / 1000`;
-  });
-
-  // ── Enter key handler ──────────────────────────────────────────────────────
-  inputEl.addEventListener("keydown", e => {
-    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-  });
-
-  // ── Format AI text (basic markdown) ───────────────────────────────────────
-  function formatText(text) {
-    return text
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(/`([^`]+)`/g, "<code>$1</code>")
-      .replace(/^### (.+)$/gm, "<strong>$1</strong>")
-      .replace(/^## (.+)$/gm,  "<strong>$1</strong>")
-      .replace(/^# (.+)$/gm,   "<strong>$1</strong>")
-      .replace(/^\* (.+)$/gm,  "<li>$1</li>")
-      .replace(/^- (.+)$/gm,   "<li>$1</li>")
-      .replace(/^(\d+)\. (.+)$/gm, "<li>$2</li>")
-      .replace(/(<li>.*<\/li>(\n|$))+/g, m => `<ul>${m}</ul>`)
-      .replace(/\n{2,}/g, "</p><p>")
-      .replace(/\n/g, "<br/>")
-      .replace(/^(.+)$/, "<p>$1</p>");
-  }
-
-  // ── Get time string ────────────────────────────────────────────────────────
-  function timeNow() {
-    return new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  }
-
-  // ── Append message bubble ──────────────────────────────────────────────────
-  function appendMessage(role, content, isTyping = false) {
-    const row = document.createElement("div");
-    row.className = `msg-row ${role}`;
-    if (isTyping) row.id = "typing-row";
-
-    const avatarHTML = role === "ai"
-      ? `<div class="avatar ai">🤖</div>`
-      : `<div class="avatar user">👤</div>`;
-
-    const bubbleContent = isTyping
-      ? `<div class="typing-indicator"><span></span><span></span><span></span></div>`
-      : formatText(content);
-
-    row.innerHTML = `
-      ${avatarHTML}
-      <div>
-        <div class="bubble">${bubbleContent}</div>
-        ${!isTyping ? `<div class="msg-time">${timeNow()}</div>` : ""}
-      </div>`;
-
-    chatArea.appendChild(row);
-    chatArea.scrollTop = chatArea.scrollHeight;
-    return row;
-  }
-
-  // ── Remove typing indicator ────────────────────────────────────────────────
-  function removeTyping() {
-    const t = document.getElementById("typing-row");
-    if (t) t.remove();
-  }
-
-  // ── Show error toast ───────────────────────────────────────────────────────
-  function showToast(msg) {
-    const t = document.createElement("div");
-    t.className = "toast"; t.textContent = msg;
-    document.body.appendChild(t);
-    setTimeout(() => t.remove(), 3500);
-  }
-
-  // ── Main send ──────────────────────────────────────────────────────────────
-  async function sendMessage() {
-    const text = inputEl.value.trim();
-    if (!text || isLoading) return;
-
-    // Remove welcome screen on first message
-    const welcome = document.getElementById("welcome-screen");
-    if (welcome) welcome.remove();
-
-    // Add to state
-    messages.push({ role: "user", content: text });
-
-    // Render user bubble
-    appendMessage("user", text);
-
-    // Clear input
-    inputEl.value = "";
-    inputEl.style.height = "auto";
-    charCount.textContent = "0 / 1000";
-
-    // Show typing
-    isLoading = true;
-    sendBtn.disabled = true;
-    appendMessage("ai", "", true);
-
-    try {
-      const res = await fetch(`${BACKEND_URL}/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages })
-      });
-
-      if (!res.ok) throw new Error(`Server error ${res.status}`);
-
-      const data = await res.json();
-      const reply = data.reply;
-
-      // Update state
-      messages.push({ role: "assistant", content: reply });
-
-      // Replace typing with answer
-      removeTyping();
-      appendMessage("ai", reply);
-
-    } catch (err) {
-      removeTyping();
-      showToast("⚠️ Could not reach TaxWise AI — check your connection.");
-      messages.pop(); // remove failed user message from state
-    } finally {
-      isLoading = false;
-      sendBtn.disabled = false;
-      inputEl.focus();
-    }
-  }
-
-  // ── Init ───────────────────────────────────────────────────────────────────
-  showWelcome();
-  inputEl.focus();
-</script>
-</body>
-</html>
+</body></html>
