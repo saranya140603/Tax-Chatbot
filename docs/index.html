@@ -1,360 +1,531 @@
-<!DOCTYPE html><html class="dark" lang="en"><head>
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>FinAI Concierge - Your Tax &amp; Finance Assistant</title>
+<title>TaxWise AI - Your Tax & Finance Assistant</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                "background": "#0f131e",
-                "outline-variant": "#424754",
-                "surface-container-highest": "#313441",
-                "surface-bright": "#353945",
-                "on-secondary-fixed": "#001c39",
-                "tertiary-container": "#8c919b",
-                "on-secondary": "#00315d",
-                "text-muted": "#94A3B8",
-                "on-tertiary-container": "#252a32",
-                "surface-dim": "#0f131e",
-                "on-tertiary": "#2c3139",
-                "on-primary-fixed": "#001a42",
-                "tertiary-fixed-dim": "#c2c6d1",
-                "surface-container-lowest": "#0a0e19",
-                "secondary": "#a4c9ff",
-                "error-container": "#93000a",
-                "tertiary": "#c2c6d1",
-                "surface-tint": "#adc6ff",
-                "on-primary": "#002e6a",
-                "inverse-on-surface": "#2c303c",
-                "surface": "#0f131e",
-                "surface-container": "#1b1f2b",
-                "surface-deep": "#0B0F1A",
-                "tertiary-fixed": "#dee2ed",
-                "error": "#ffb4ab",
-                "on-tertiary-fixed-variant": "#424750",
-                "success-emerald": "#10B981",
-                "secondary-container": "#0267b8",
-                "inverse-primary": "#005ac2",
-                "on-error-container": "#ffdad6",
-                "secondary-fixed-dim": "#a4c9ff",
-                "on-surface": "#dfe2f2",
-                "inverse-surface": "#dfe2f2",
-                "surface-card": "#131929",
-                "on-tertiary-fixed": "#171c23",
-                "on-secondary-container": "#d6e5ff",
-                "surface-container-high": "#262a36",
-                "on-error": "#690005",
-                "primary-fixed-dim": "#adc6ff",
-                "primary-fixed": "#d8e2ff",
-                "surface-variant": "#313441",
-                "on-primary-container": "#00285d",
-                "on-primary-fixed-variant": "#004395",
-                "on-secondary-fixed-variant": "#004883",
-                "secondary-fixed": "#d4e3ff",
-                "accent-cyan": "#22D3EE",
-                "on-surface-variant": "#c2c6d6",
-                "primary": "#adc6ff",
-                "surface-container-low": "#171b27",
-                "primary-container": "#4d8eff",
-                "outline": "#8c909f",
-                "on-background": "#dfe2f2"
-              },
-              "borderRadius": {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px"
-              },
-              "spacing": {
-                "margin-mobile": "20px",
-                "base": "8px",
-                "margin-desktop": "64px",
-                "gutter": "24px",
-                "container-max": "1200px"
-              },
-              "fontFamily": {
-                "label-sm": ["Inter"],
-                "body-md": ["Inter"],
-                "display-lg": ["Space Grotesk"],
-                "headline-lg": ["Space Grotesk"],
-                "label-md": ["Inter"],
-                "body-lg": ["Inter"],
-                "headline-md": ["Space Grotesk"],
-                "headline-lg-mobile": ["Space Grotesk"]
-              },
-              "fontSize": {
-                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
-                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
-                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
-                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-              }
-            },
-          },
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "background": "#0f131e",
+          "outline-variant": "#424754",
+          "surface-container-highest": "#313441",
+          "surface-bright": "#353945",
+          "on-secondary": "#00315d",
+          "text-muted": "#94A3B8",
+          "surface-dim": "#0f131e",
+          "surface": "#0f131e",
+          "surface-container": "#1b1f2b",
+          "surface-deep": "#0B0F1A",
+          "secondary": "#a4c9ff",
+          "error-container": "#93000a",
+          "surface-tint": "#adc6ff",
+          "on-primary": "#002e6a",
+          "surface-card": "#131929",
+          "error": "#ffb4ab",
+          "success-emerald": "#10B981",
+          "secondary-container": "#0267b8",
+          "inverse-primary": "#005ac2",
+          "on-error-container": "#ffdad6",
+          "on-surface": "#dfe2f2",
+          "surface-container-high": "#262a36",
+          "on-error": "#690005",
+          "primary-fixed": "#d8e2ff",
+          "surface-variant": "#313441",
+          "accent-cyan": "#22D3EE",
+          "on-surface-variant": "#c2c6d6",
+          "primary": "#adc6ff",
+          "surface-container-low": "#171b27",
+          "primary-container": "#4d8eff",
+          "outline": "#8c909f",
+          "on-background": "#dfe2f2",
+          "surface-container-lowest": "#0a0e19",
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"
+        },
+        spacing: {
+          "margin-mobile": "20px", "base": "8px",
+          "margin-desktop": "64px", "gutter": "24px", "container-max": "1200px"
+        },
+        fontFamily: {
+          "display-lg": ["Space Grotesk"], "headline-lg": ["Space Grotesk"],
+          "headline-md": ["Space Grotesk"], "body-md": ["Inter"], "body-lg": ["Inter"],
+          "label-md": ["Inter"], "label-sm": ["Inter"],
+        },
+        fontSize: {
+          "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+          "headline-md": ["24px", { lineHeight: "32px", fontWeight: "500" }],
+          "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+          "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "500" }],
+          "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
         }
-    </script>
+      }
+    }
+  }
+</script>
 <style>
-        .glass-panel {
-            background: rgba(19, 25, 41, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(240, 244, 255, 0.1);
-        }
-        .text-glow {
-            text-shadow: 0 0 10px rgba(173, 198, 255, 0.3);
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .breathing-border {
-            position: relative;
-        }
-        .breathing-border::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: inherit;
-            background: linear-gradient(90deg, #adc6ff, #005ac2, #adc6ff);
-            background-size: 200% 200%;
-            z-index: -1;
-            animation: breathe 3s linear infinite;
-            opacity: 0.5;
-        }
-        @keyframes breathe {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+  .glass-panel {
+    background: rgba(19, 25, 41, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(240, 244, 255, 0.1);
+  }
+  .text-glow { text-shadow: 0 0 10px rgba(173, 198, 255, 0.3); }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .breathing-border { position: relative; }
+  .breathing-border::after {
+    content: ''; position: absolute; inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #adc6ff, #005ac2, #adc6ff);
+    background-size: 200% 200%; z-index: -1;
+    animation: breathe 3s linear infinite; opacity: 0.5;
+  }
+  @keyframes breathe {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Typing dots */
+  .typing-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #adc6ff; display: inline-block;
+    animation: typingBounce 1.2s ease-in-out infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.18s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.36s; }
+  @keyframes typingBounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+    40% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  /* Message animation */
+  .msg-enter {
+    animation: msgFade 0.22s ease forwards;
+  }
+  @keyframes msgFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Chip hover */
+  .feature-card { cursor: pointer; }
+</style>
 </head>
+
 <body class="bg-surface-deep text-on-surface font-body-md min-h-screen selection:bg-primary/30 selection:text-primary">
-<!-- Grid Background Decoration -->
-<div class="fixed inset-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(#adc6ff 1px, transparent 1px); background-size: 40px 40px;"></div>
-<!-- Top Navigation Bar -->
+
+<!-- Grid Background -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03]"
+  style="background-image: radial-gradient(#adc6ff 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+<!-- ── NAVBAR ── -->
 <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
-<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
-<span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">work</span>
-</div>
-<span class="font-display-lg text-headline-md font-bold text-primary tracking-tight">FinAI Concierge</span>
-</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Dashboard</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Advisory</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Insights</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Compliance</a>
-</div>
-<div class="flex items-center gap-4">
-<div class="hidden md:flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/10">
-<span class="w-2 h-2 rounded-full bg-success-emerald animate-pulse"></span>
-<span class="text-label-sm font-label-sm text-on-surface-variant">Llama 3.3 · Online</span>
-</div>
-<button class="bg-primary hover:bg-primary-container text-on-primary font-bold px-5 py-2 rounded-xl transition-all cursor-pointer active:scale-95 shadow-lg shadow-primary/10">
-                    New Chat
-                </button>
-</div>
-</div>
+  <div class="flex justify-between items-center h-16 px-5 md:px-margin-desktop max-w-container-max mx-auto">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+        <span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings:'FILL' 1;">work</span>
+      </div>
+      <span class="font-display-lg text-headline-md font-bold text-primary tracking-tight">TaxWise AI</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-md" href="#">Dashboard</a>
+      <a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-label-md" href="#">Advisory</a>
+      <a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-label-md" href="#">Insights</a>
+      <a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-label-md" href="#">Compliance</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/10">
+        <span class="w-2 h-2 rounded-full bg-success-emerald animate-pulse"></span>
+        <span class="text-label-sm text-on-surface-variant">Llama 3.3 · Online</span>
+      </div>
+      <button onclick="openChat()"
+        class="bg-primary hover:bg-primary-container text-on-primary font-bold px-5 py-2 rounded-xl transition-all cursor-pointer active:scale-95 shadow-lg shadow-primary/10">
+        New Chat
+      </button>
+    </div>
+  </div>
 </nav>
-<!-- Hero Content -->
-<main class="relative pt-32 pb-40 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto z-10">
-<section class="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
-<div class="w-20 h-20 mb-8 bg-surface-card glass-panel rounded-3xl flex items-center justify-center shadow-2xl animate-float">
-<span class="material-symbols-outlined text-primary text-[40px]" style="font-variation-settings: 'FILL' 1;">work</span>
-</div>
-<h1 class="font-display-lg text-display-lg md:text-display-lg text-on-surface mb-6 leading-tight tracking-tighter">
-                Your <span class="text-primary text-glow">Tax &amp; Finance</span> Assistant
-            </h1>
-<p class="font-body-lg text-body-lg text-text-muted mb-10 max-w-2xl leading-relaxed">
-                Ask me anything about income tax, GST/VAT, deductions, capital gains, or general financial planning — I'll explain it clearly.
-            </p>
-</section>
-<!-- Feature Grid (Bento Style) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
-<!-- Card 1 -->
-<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
-<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">bar_chart</span>
-</div>
-<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Income Tax Slabs</h3>
-<p class="text-text-muted leading-relaxed mb-6">What are the income tax slabs for salaried employees in India?</p>
-<div class="flex items-center gap-2 text-primary font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
-<span class="">Ask this now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
-<div class="w-12 h-12 bg-accent-cyan/10 rounded-2xl flex items-center justify-center mb-6 text-accent-cyan group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">description</span>
-</div>
-<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">GST &amp; Rates</h3>
-<p class="text-text-muted leading-relaxed mb-6">How does GST work and what are the different GST rates?</p>
-<div class="flex items-center gap-2 text-accent-cyan font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
-<span class="">Ask this now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
-<div class="w-12 h-12 bg-success-emerald/10 rounded-2xl flex items-center justify-center mb-6 text-success-emerald group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">savings</span>
-</div>
-<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Section 80C</h3>
-<p class="text-text-muted leading-relaxed mb-6">What deductions can I claim under Section 80C?</p>
-<div class="flex items-center gap-2 text-success-emerald font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
-<span class="">Ask this now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</div>
-</div>
-<!-- Card 4 -->
-<div class="glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all cursor-pointer border border-outline-variant/10 hover:border-primary/30">
-<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">trending_up</span>
-</div>
-<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Capital Gains</h3>
-<p class="text-text-muted leading-relaxed mb-6">How is capital gains tax calculated on stock market investments?</p>
-<div class="flex items-center gap-2 text-primary font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
-<span class="">Ask this now</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</div>
-</div>
-</div>
+
+<!-- ── HERO ── -->
+<main class="relative pt-32 pb-40 px-5 md:px-margin-desktop max-w-container-max mx-auto z-10">
+  <section class="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+    <div class="w-20 h-20 mb-8 bg-surface-card glass-panel rounded-3xl flex items-center justify-center shadow-2xl animate-float">
+      <span class="material-symbols-outlined text-primary text-[40px]" style="font-variation-settings:'FILL' 1;">work</span>
+    </div>
+    <h1 class="font-display-lg text-display-lg text-on-surface mb-6 leading-tight tracking-tighter">
+      Your <span class="text-primary text-glow">Tax &amp; Finance</span> Assistant
+    </h1>
+    <p class="font-body-lg text-body-lg text-text-muted mb-10 max-w-2xl leading-relaxed">
+      Ask me anything about income tax, GST/VAT, deductions, capital gains, or general financial planning — I'll explain it clearly.
+    </p>
+    <button onclick="openChat()"
+      class="bg-primary text-on-primary font-bold px-8 py-3 rounded-2xl text-body-md hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20 flex items-center gap-2">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">forum</span>
+      Start Chatting
+    </button>
+  </section>
+
+  <!-- Feature Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
+    <div class="feature-card glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all border border-outline-variant/10 hover:border-primary/30" onclick="askQuestion('What are the income tax slabs for salaried employees in India?')">
+      <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined">bar_chart</span>
+      </div>
+      <h3 class="text-headline-md font-bold mb-3 text-on-surface">Income Tax Slabs</h3>
+      <p class="text-text-muted leading-relaxed mb-6">What are the income tax slabs for salaried employees in India?</p>
+      <div class="flex items-center gap-2 text-primary text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+        <span>Ask this now</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </div>
+    </div>
+
+    <div class="feature-card glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all border border-outline-variant/10 hover:border-accent-cyan/30" onclick="askQuestion('How does GST work and what are the different GST rates?')">
+      <div class="w-12 h-12 bg-accent-cyan/10 rounded-2xl flex items-center justify-center mb-6 text-accent-cyan group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined">description</span>
+      </div>
+      <h3 class="text-headline-md font-bold mb-3 text-on-surface">GST &amp; Rates</h3>
+      <p class="text-text-muted leading-relaxed mb-6">How does GST work and what are the different GST rates?</p>
+      <div class="flex items-center gap-2 text-accent-cyan text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+        <span>Ask this now</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </div>
+    </div>
+
+    <div class="feature-card glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all border border-outline-variant/10 hover:border-success-emerald/30" onclick="askQuestion('What deductions can I claim under Section 80C?')">
+      <div class="w-12 h-12 bg-success-emerald/10 rounded-2xl flex items-center justify-center mb-6 text-success-emerald group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined">savings</span>
+      </div>
+      <h3 class="text-headline-md font-bold mb-3 text-on-surface">Section 80C</h3>
+      <p class="text-text-muted leading-relaxed mb-6">What deductions can I claim under Section 80C?</p>
+      <div class="flex items-center gap-2 text-success-emerald text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+        <span>Ask this now</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </div>
+    </div>
+
+    <div class="feature-card glass-panel p-8 rounded-[2rem] group hover:bg-surface-bright transition-all border border-outline-variant/10 hover:border-primary/30" onclick="askQuestion('How is capital gains tax calculated on stock market investments?')">
+      <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined">trending_up</span>
+      </div>
+      <h3 class="text-headline-md font-bold mb-3 text-on-surface">Capital Gains</h3>
+      <p class="text-text-muted leading-relaxed mb-6">How is capital gains tax calculated on stock market investments?</p>
+      <div class="flex items-center gap-2 text-primary text-label-md opacity-0 group-hover:opacity-100 transition-opacity">
+        <span>Ask this now</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </div>
+    </div>
+  </div>
 </main>
-<!-- Footer Component -->
+
+<!-- ── FOOTER ── -->
 <footer class="bg-surface-container-lowest border-t border-outline-variant/10 w-full py-12">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-gutter max-w-container-max mx-auto">
-<div class="flex flex-col items-center md:items-start gap-4">
-<div class="flex items-center gap-3">
-<div class="w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-[14px]">work</span>
-</div>
-<span class="font-display-lg text-headline-md text-primary">FinAI Concierge</span>
-</div>
-<p class="font-label-sm text-label-sm text-text-muted text-center md:text-left">
-                    © 2024 FinAI Global. All rights reserved. SEC Registered Investment Advisor.
-                </p>
-</div>
-<div class="flex flex-wrap justify-center gap-6">
-<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Terms of Service</a>
-<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Regulatory Disclosures</a>
-<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Security</a>
-</div>
-</div>
+  <div class="flex flex-col md:flex-row justify-between items-center px-5 md:px-margin-desktop gap-gutter max-w-container-max mx-auto">
+    <div class="flex flex-col items-center md:items-start gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-[14px]">work</span>
+        </div>
+        <span class="font-display-lg text-headline-md text-primary">TaxWise AI</span>
+      </div>
+      <p class="text-label-sm text-text-muted text-center md:text-left">
+        © 2025 TaxWise AI. For informational purposes only. Not professional tax advice.
+      </p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-6">
+      <a class="text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+      <a class="text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+      <a class="text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Security</a>
+    </div>
+  </div>
 </footer>
-<!-- Chat Widget Implementation -->
+
+<!-- ── CHAT WIDGET ── -->
 <div class="fixed bottom-8 right-8 z-[100] flex flex-col items-end" id="chat-container">
-<!-- Chat Window -->
-<div class="hidden flex-col glass-panel rounded-[2rem] shadow-2xl mb-4 overflow-hidden transform origin-bottom-right transition-all duration-300 scale-95 opacity-0 w-[480px] h-[680px]" id="chat-window">
-<!-- Chat Header -->
-<div class="p-5 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-low">
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[28px]">smart_toy</span></div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface font-bold text-[16px]">TaxWise Assistant</h4>
-<div class="flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-success-emerald"></span>
-<span class="text-[11px] text-text-muted font-medium">Ready to help</span>
+
+  <!-- Chat Window -->
+  <div class="hidden flex-col glass-panel rounded-[2rem] shadow-2xl mb-4 overflow-hidden
+              transition-all duration-300 w-[420px] h-[600px]"
+       id="chat-window" style="max-width: calc(100vw - 2rem);">
+
+    <!-- Chat Header -->
+    <div class="p-4 border-b border-outline-variant/10 flex items-center justify-between bg-surface-container-low flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-[22px]">smart_toy</span>
+        </div>
+        <div>
+          <h4 class="text-label-md font-bold text-on-surface">TaxWise Assistant</h4>
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-success-emerald"></span>
+            <span class="text-[11px] text-text-muted">Powered by Llama 3.3 70B</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="clearChat()" title="New chat"
+          class="w-8 h-8 rounded-full hover:bg-surface-bright flex items-center justify-center transition-colors">
+          <span class="material-symbols-outlined text-on-surface-variant text-[18px]">add</span>
+        </button>
+        <button onclick="closeChat()" id="close-chat"
+          class="w-8 h-8 rounded-full hover:bg-surface-bright flex items-center justify-center transition-colors">
+          <span class="material-symbols-outlined text-on-surface-variant">close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Messages Area -->
+    <div class="flex-1 overflow-y-auto p-4 space-y-4 hide-scrollbar" id="chat-messages">
+      <!-- Disclaimer -->
+      <div class="bg-error-container/10 border border-error/20 p-3 rounded-xl flex gap-2">
+        <span class="material-symbols-outlined text-error text-[16px] flex-shrink-0 mt-0.5">warning</span>
+        <p class="text-[12px] text-on-surface-variant leading-relaxed">
+          TaxWise AI provides general information only — not professional tax advice.
+        </p>
+      </div>
+      <!-- Initial bot message -->
+      <div class="flex gap-3 msg-enter">
+        <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-primary text-[16px]">smart_toy</span>
+        </div>
+        <div class="bg-surface-container px-4 py-3 rounded-2xl rounded-tl-none max-w-[85%]">
+          <p class="text-[14px] text-on-surface leading-relaxed">
+            Hello! I'm TaxWise AI 👋 Ask me anything about income tax, GST, deductions, capital gains, or financial planning!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="p-4 border-t border-outline-variant/10 bg-surface-container-low flex-shrink-0">
+      <div class="breathing-border bg-surface-card rounded-2xl px-4 py-3 flex items-end gap-3">
+        <textarea id="chat-input" rows="1"
+          class="bg-transparent border-none focus:ring-0 w-full text-[14px] text-on-surface placeholder:text-text-muted resize-none hide-scrollbar outline-none"
+          placeholder="Ask about taxes, GST, deductions..."
+          style="max-height: 100px;"></textarea>
+        <button id="send-btn" onclick="sendMessage()"
+          class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-on-primary hover:scale-105 active:scale-95 transition-transform flex-shrink-0 disabled:opacity-40">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">send</span>
+        </button>
+      </div>
+      <p class="text-[10px] text-text-muted mt-2 text-center">Press Enter to send · Shift+Enter for new line</p>
+    </div>
+  </div>
+
+  <!-- FAB Toggle Button -->
+  <button onclick="toggleChat()" id="chat-toggle"
+    class="w-16 h-16 bg-primary rounded-full shadow-xl shadow-primary/30 flex items-center justify-center text-on-primary hover:scale-110 active:scale-95 transition-all cursor-pointer group">
+    <span class="material-symbols-outlined text-[32px]" id="fab-icon"
+      style="font-variation-settings:'FILL' 1;">forum</span>
+  </button>
 </div>
-</div>
-</div>
-<button class="w-8 h-8 rounded-full hover:bg-surface-bright flex items-center justify-center transition-colors" id="close-chat">
-<span class="material-symbols-outlined text-on-surface-variant">close</span>
-</button>
-</div>
-<!-- Chat Content Area -->
-<div class="flex-1 overflow-y-auto p-5 space-y-4 hide-scrollbar">
-<!-- Warning Message -->
-<div class="bg-error-container/10 border border-error/20 p-3 rounded-xl flex gap-3">
-<span class="material-symbols-outlined text-error text-[18px]">warning</span>
-<p class="text-[12px] text-on-surface-variant leading-relaxed text-[14px]">
-                        TaxWise AI provides general information only — not professional tax advice. Consult a qualified tax advisor for your specific situation.
-                    </p>
-</div>
-<!-- Bot Message -->
-<div class="flex gap-3 max-w-[85%]">
-<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-primary text-[16px]">work</span>
-</div>
-<div class="bg-surface-container px-4 py-3 rounded-2xl rounded-tl-none">
-<p class="text-body-md text-[14px] text-[16px]">Hello! How can I help you navigate your taxes or financial planning today?</p>
-</div>
-</div>
-</div>
-<!-- Chat Input -->
-<div class="p-4 border-t border-outline-variant/10 bg-surface-container-low">
-<div class="breathing-border bg-surface-card rounded-2xl px-4 py-3 flex items-center gap-3 focus-within:ring-2 focus-within:ring-primary/30 transition-all">
-<textarea class="bg-transparent border-none focus:ring-0 w-full text-body-md text-[14px] placeholder:text-text-muted resize-none hide-scrollbar text-[16px]" placeholder="Ask about taxes, GST, deductions, capital gains..." rows="1"></textarea>
-<button class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">send</span>
-</button>
-</div>
-<p class="text-[10px] text-text-muted mt-2 text-center">
-                    Press Enter to send · Shift+Enter for new line
-                </p>
-</div>
-</div>
-<!-- FAB Button -->
-<button class="w-16 h-16 bg-primary rounded-full shadow-xl shadow-primary/30 flex items-center justify-center text-on-primary hover:scale-110 active:scale-95 transition-all cursor-pointer group" id="chat-toggle">
-<span class="material-symbols-outlined text-[32px] group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">forum</span>
-</button>
-</div>
-<!-- Interaction Script -->
+
+<!-- ── SCRIPTS ── -->
 <script>
-        const chatToggle = document.getElementById('chat-toggle');
-        const chatWindow = document.getElementById('chat-window');
-        const closeChat = document.getElementById('close-chat');
-        let isOpen = false;
+  // ── CONFIG ──────────────────────────────────────────────────────────────
+  const BACKEND_URL = "https://tax-chatbot-a46m.onrender.com";
 
-        function toggleChat() {
-            isOpen = !isOpen;
-            if (isOpen) {
-                chatWindow.classList.remove('hidden');
-                setTimeout(() => {
-                    chatWindow.classList.remove('scale-95', 'opacity-0');
-                    chatWindow.classList.add('scale-100', 'opacity-100');
-                }, 10);
-                chatToggle.innerHTML = '<span class="material-symbols-outlined text-[32px]">expand_more</span>';
-            } else {
-                chatWindow.classList.remove('scale-100', 'opacity-100');
-                chatWindow.classList.add('scale-95', 'opacity-0');
-                setTimeout(() => {
-                    chatWindow.classList.add('hidden');
-                }, 300);
-                chatToggle.innerHTML = '<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: \'FILL\' 1;">forum</span>';
-            }
-        }
+  // ── STATE ────────────────────────────────────────────────────────────────
+  let messages = [];
+  let isLoading = false;
+  let chatIsOpen = false;
 
-        chatToggle.addEventListener('click', toggleChat);
-        closeChat.addEventListener('click', toggleChat);
+  const chatWindow  = document.getElementById("chat-window");
+  const chatInput   = document.getElementById("chat-input");
+  const sendBtn     = document.getElementById("send-btn");
+  const chatMessages = document.getElementById("chat-messages");
+  const fabIcon     = document.getElementById("fab-icon");
 
-        // Auto-resize textarea
-        const textarea = document.querySelector('textarea');
-        textarea.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
-        });
-    </script>
+  // ── CHAT OPEN / CLOSE ────────────────────────────────────────────────────
+  function openChat() {
+    if (!chatIsOpen) toggleChat();
+  }
+  function closeChat() {
+    if (chatIsOpen) toggleChat();
+  }
+  function toggleChat() {
+    chatIsOpen = !chatIsOpen;
+    if (chatIsOpen) {
+      chatWindow.classList.remove("hidden");
+      chatWindow.classList.add("flex");
+      fabIcon.textContent = "expand_more";
+      fabIcon.style.fontVariationSettings = "";
+      setTimeout(() => chatInput.focus(), 100);
+    } else {
+      chatWindow.classList.add("hidden");
+      chatWindow.classList.remove("flex");
+      fabIcon.textContent = "forum";
+      fabIcon.style.fontVariationSettings = "'FILL' 1";
+    }
+  }
 
+  // ── CLEAR CHAT ───────────────────────────────────────────────────────────
+  function clearChat() {
+    messages = [];
+    chatMessages.innerHTML = `
+      <div class="bg-error-container/10 border border-error/20 p-3 rounded-xl flex gap-2">
+        <span class="material-symbols-outlined text-error text-[16px] flex-shrink-0 mt-0.5">warning</span>
+        <p class="text-[12px] text-on-surface-variant leading-relaxed">
+          TaxWise AI provides general information only — not professional tax advice.
+        </p>
+      </div>
+      <div class="flex gap-3 msg-enter">
+        <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-primary text-[16px]">smart_toy</span>
+        </div>
+        <div class="bg-surface-container px-4 py-3 rounded-2xl rounded-tl-none max-w-[85%]">
+          <p class="text-[14px] text-on-surface leading-relaxed">Hello! I'm TaxWise AI 👋 Ask me anything about income tax, GST, deductions, capital gains, or financial planning!</p>
+        </div>
+      </div>`;
+  }
 
-</body></html>
+  // ── ASK FROM CARD ────────────────────────────────────────────────────────
+  function askQuestion(question) {
+    openChat();
+    setTimeout(() => {
+      chatInput.value = question;
+      sendMessage();
+    }, 350);
+  }
+
+  // ── FORMAT MARKDOWN ──────────────────────────────────────────────────────
+  function formatText(text) {
+    return text
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/`([^`]+)`/g, "<code style='background:#1b1f2b;padding:1px 5px;border-radius:4px;font-family:monospace;font-size:13px;color:#adc6ff'>$1</code>")
+      .replace(/^### (.+)$/gm, "<strong>$1</strong>")
+      .replace(/^## (.+)$/gm, "<strong>$1</strong>")
+      .replace(/^# (.+)$/gm, "<strong>$1</strong>")
+      .replace(/^\* (.+)$/gm, "<li style='margin:3px 0;color:#94A3B8'>$1</li>")
+      .replace(/^- (.+)$/gm, "<li style='margin:3px 0;color:#94A3B8'>$1</li>")
+      .replace(/^(\d+)\. (.+)$/gm, "<li style='margin:3px 0;color:#94A3B8'>$2</li>")
+      .replace(/(<li.*<\/li>\n?)+/g, m => `<ul style='padding-left:18px;margin:6px 0'>${m}</ul>`)
+      .replace(/\n{2,}/g, "<br><br>")
+      .replace(/\n/g, "<br>");
+  }
+
+  // ── APPEND USER MESSAGE ──────────────────────────────────────────────────
+  function appendUserMessage(text) {
+    const div = document.createElement("div");
+    div.className = "flex gap-3 justify-end msg-enter";
+    div.innerHTML = `
+      <div class="bg-primary/20 border border-primary/20 px-4 py-3 rounded-2xl rounded-tr-none max-w-[85%]">
+        <p class="text-[14px] text-on-surface leading-relaxed">${text.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</p>
+      </div>
+      <div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/20 flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-outlined text-on-surface-variant text-[16px]">person</span>
+      </div>`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // ── APPEND BOT MESSAGE ───────────────────────────────────────────────────
+  function appendBotMessage(text) {
+    const div = document.createElement("div");
+    div.className = "flex gap-3 msg-enter";
+    div.innerHTML = `
+      <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-outlined text-primary text-[16px]">smart_toy</span>
+      </div>
+      <div class="bg-surface-container px-4 py-3 rounded-2xl rounded-tl-none max-w-[85%]">
+        <p class="text-[14px] text-on-surface leading-relaxed">${formatText(text)}</p>
+      </div>`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // ── TYPING INDICATOR ─────────────────────────────────────────────────────
+  function showTyping() {
+    const div = document.createElement("div");
+    div.className = "flex gap-3 msg-enter";
+    div.id = "typing-indicator";
+    div.innerHTML = `
+      <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-outlined text-primary text-[16px]">smart_toy</span>
+      </div>
+      <div class="bg-surface-container px-4 py-3 rounded-2xl rounded-tl-none">
+        <div style="display:flex;gap:5px;align-items:center;padding:2px 0">
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+        </div>
+      </div>`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function removeTyping() {
+    const t = document.getElementById("typing-indicator");
+    if (t) t.remove();
+  }
+
+  // ── SEND MESSAGE ─────────────────────────────────────────────────────────
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text || isLoading) return;
+
+    messages.push({ role: "user", content: text });
+    appendUserMessage(text);
+
+    chatInput.value = "";
+    chatInput.style.height = "auto";
+
+    isLoading = true;
+    sendBtn.disabled = true;
+    showTyping();
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages })
+      });
+
+      if (!res.ok) throw new Error(`Server error ${res.status}`);
+
+      const data = await res.json();
+      const reply = data.reply;
+
+      messages.push({ role: "assistant", content: reply });
+      removeTyping();
+      appendBotMessage(reply);
+
+    } catch (err) {
+      removeTyping();
+      appendBotMessage("⚠️ Sorry, I couldn't reach the server. Please try again in a moment.");
+      messages.pop();
+    } finally {
+      isLoading = false;
+      sendBtn.disabled = false;
+      chatInput.focus();
+    }
+  }
+
+  // ── INPUT HANDLERS ───────────────────────────────────────────────────────
+  chatInput.addEventListener("keydown", e => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+
+  chatInput.addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = Math.min(this.scrollHeight, 100) + "px";
+  });
+</script>
+
+</body>
+</html>
